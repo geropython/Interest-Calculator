@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Interés Mercado Pago</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💸 Calculadora Mercado Pago (<span id="tna-label">36</span>% TNA anual)</h1>
+
+    <div class="inputs-row">
+      <div class="input-group">
+        <label>Monto inicial: $</label>
+        <input type="text" id="monto" placeholder="Ej: 10000" oninput="formatearInputMonto(this)">
+      </div>
+      <div class="input-group">
+        <label>Aporte mensual: $</label>
+        <input type="text" id="aporte" placeholder="Ej: 500000" oninput="formatearInputMonto(this)">
+      </div>
+      <div class="input-group">
+        <label>TNA anual (%): </label>
+        <input type="number" id="tna" placeholder="Ej: 36" value="36" min="0" step="0.01" oninput="document.getElementById('tna-label').textContent = this.value">
+      </div>
+      <div class="input-group">
+        <label>Objetivo ingreso pasivo mensual ($):</label>
+        <input type="text" id="objetivo" placeholder="Ej: 1000000" oninput="formatearInputMonto(this)">
+      </div>
+      <div class="input-group input-btn">
+        <button onclick="calcular()">Calcular</button>
+      </div>
+    </div>
+
+    <h2 id="resultado"></h2>
+    <div id="progreso"></div>
+    <div id="grafico-container" style="margin-top:32px;">
+      <canvas id="graficoGanancia" height="120"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
